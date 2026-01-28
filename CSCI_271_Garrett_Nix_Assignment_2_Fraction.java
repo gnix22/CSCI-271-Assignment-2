@@ -1,8 +1,9 @@
 class Fraction{
-    private int numerator;
-    private int denominator;
+    private long a_;
+    private long b_;
+    private long gcf_;
     /******************************<euclidGCD>*****************************
-    * Description: provides a reduced fraction based on Euclid's algorithm for 
+    * Description: provides greatest common denominator based on Euclid's algorithm for 
     * finding the greatest common denominator.
     *
     * Parameters: 
@@ -17,20 +18,39 @@ class Fraction{
     * Called by: list function(s) that call this one 
     * Calls: list function(s) that this one calls 
     ************************************************************************/
-    private int euclidGCD(int a, int b){
-        numerator = a;
-        denominator = b;
-        if(numerator < 0){
-            numerator = -numerator;
+    private long euclidGCD(long a, long b){
+        if(a < 0){
+            a = -a;
         }
-        while(denominator != 0){
-            int remainder = numerator % denominator;
-            numerator = denominator;
-            denominator = remainder;
+        while(b != 0){
+            long remainder = a % b;
+            a = b;
+            b = remainder;
         }
-        if(numerator == 0){
-            numerator = 1;
+        if(a == 0){
+            a = 1;
         }
-        return numerator;
+        return a;
+    }
+    // My guess going based on what bits of the slides we have, we override toString which is what println calls. 
+    // This outputs the result of everything.
+    @Override
+    public String toString(){
+        String a = a_+""; // found you can coerce long to string
+        String b = b_+"";
+        String resultString = a + "/" + b;
+        return resultString;
+    }
+    public Fraction(long a, long b){
+        a_ = a;
+        b_ = b;
+        gcf_ = euclidGCD(a_, b_);
+        System.out.println("gcf is " + gcf_);
+        System.out.println("a is " + a_);
+        System.out.println("b is " + b_);
+        a_ /= gcf_;
+        b_ /= gcf_;
+        System.out.println("a is " + a_);
+        System.out.println("b is " + b_);
     }
 }
