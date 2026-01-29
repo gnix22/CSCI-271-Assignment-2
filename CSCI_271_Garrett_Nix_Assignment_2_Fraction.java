@@ -2,6 +2,33 @@ class Fraction{
     private long a_;
     private long b_;
     private long gcf_;
+    /******************************<Fraction>*****************************
+    * Description: Constructor methods for fractions 
+    *
+    * Parameters: 
+    *   a: Long integer acts as numerator.
+    *   b: Long integer acts as denominator.
+    * Pre: A variable of type Fraction must be declared with either a numerator
+    * and denominator.
+    *
+    * Post: A fraction will be created, allowing for methods to be called for 
+    * arithmetic operations.
+    *
+    * Returns: None 
+    *
+    * Called by: list function(s) that call this one 
+    * Calls: list function(s) that this one calls 
+    ************************************************************************/
+    public Fraction(long a, long b){
+        a_ = a;
+        b_ = b;
+        gcf_ = euclidGCD(a_, b_);
+    }
+    public Fraction(long a){
+        a_ = a;
+        b_ = 1; // if b is not specified upon construction, default to 1.
+        gcf_ = euclidGCD(a_,b_);
+    }
     /******************************<euclidGCD>*****************************
     * Description: provides greatest common denominator based on Euclid's algorithm for 
     * finding the greatest common denominator.
@@ -61,16 +88,22 @@ class Fraction{
         }
         return resultString;
     }
-    public Fraction(long a, long b){
-        a_ = a;
-        b_ = b;
-        gcf_ = euclidGCD(a_, b_);
-    }
-    public Fraction(long a){
-        a_ = a;
-        b_ = 1; // can eventually change just get rid of b_ = 1, but if need to call later keeping as placeholder.
-        gcf_ = euclidGCD(a_,b_);
-    }
+    /******************************<multiply>*****************************
+    * Description: Multiplies two fractions together. 
+    *
+    * Parameters: 
+    *   fraction: Fraction object consisting of fields within class.
+    *
+    * Pre: Two objects of type Fraction must be constructed in order to 
+    * perform the operation.
+    *
+    * Post: A new fraction object will be created based on the multiplication
+    *
+    * Returns: Fraction object consisting of resulting numerator and denominator
+    *
+    * Called by: list function(s) that call this one 
+    * Calls: list function(s) that this one calls 
+    ************************************************************************/
     public Fraction multiply(Fraction fraction){
         // use convention of algebraic laws to show that 
         // (a/b)*(c/d) = ac / bd as new frac
