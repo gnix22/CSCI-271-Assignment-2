@@ -94,13 +94,16 @@ class Fraction{
         long d = fraction.b_;
         long denominator = b_; // if b and d are equal, either can be chosen as denom as it doesn't matter 
         long numerator = a_ + c;
-        System.out.println("a:"+ a_ + "b:" + b_ + "c:" + c + "d:" + d);
-        System.out.println("gcd" + denominator);
         // if denoms are diff, need to find gcd
         if(b_ != d){
-            denominator = euclidGCD(b_,d); // just realized this needs to be lcm
-            System.out.println(denominator);
-            numerator = d*a_ + b_*c;
+            // for lcm, ensure pos vals
+            if(b_ < 0){
+                b_ *= -1;
+            } else if(d < 0){
+                d *= -1;
+            }
+            denominator = (b_ * d) / euclidGCD(b_,d); // just realized this needs to be lcm
+            numerator = d * a_ + b_ * c;
         }
         return new Fraction(numerator, denominator);
     }
