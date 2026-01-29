@@ -71,7 +71,49 @@ class Fraction{
         b_ = 1; // can eventually change just get rid of b_ = 1, but if need to call later keeping as placeholder.
         gcf_ = euclidGCD(a_,b_);
     }
-    //public Fraction divide(Fraction fraction){
-        
-    //}
+    public Fraction multiply(Fraction fraction){
+        // use convention of algebraic laws to show that 
+        // (a/b)*(c/d) = ac / bd as new frac
+        long c = fraction.a_;
+        long d = fraction.b_;
+        long numerator = a_ * c;
+        long denominator = b_ * d;
+        return new Fraction(numerator, denominator);
+    }
+    public Fraction divide(Fraction fraction){
+        // use convention of algebraic laws to show that 
+        // (a/b)/(c/d) = ad / bc as new frac
+        long c = fraction.a_;
+        long d = fraction.b_;
+        long numerator = a_ * d;
+        long denominator = b_ * c;
+        return new Fraction(numerator, denominator);
+    }
+    public Fraction addFraction(Fraction fraction){
+        long c = fraction.a_;
+        long d = fraction.b_;
+        long denominator = b_; // if b and d are equal, either can be chosen as denom as it doesn't matter 
+        long numerator = a_ + c;
+        System.out.println("a:"+ a_ + "b:" + b_ + "c:" + c + "d:" + d);
+        System.out.println("gcd" + denominator);
+        // if denoms are diff, need to find gcd
+        if(b_ != d){
+            denominator = euclidGCD(b_,d); // just realized this needs to be lcm
+            System.out.println(denominator);
+            numerator = d*a_ + b_*c;
+        }
+        return new Fraction(numerator, denominator);
+    }
+    public Fraction subtract(Fraction fraction){
+        long c = fraction.a_;
+        long d = fraction.b_;
+        long denominator = b_; // if b and d are equal, either can be chosen as denom as it doesn't matter 
+        long numerator = a_ - c;
+        // if denoms are diff, need to find gcd
+        if(b_ != d){
+            denominator = euclidGCD(b_,d);
+            numerator = d*a_ - b_*c;
+        }
+        return new Fraction(numerator, denominator);
+    }
 }
