@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx} % Use this package to include images
+\usepackage{amsmath} % A library of many standard math expressions
+\usepackage[margin=1in]{geometry}% Sets 1in margins.
+\usepackage{fancyhdr} % Creates headers and footers
+\usepackage{enumerate}  %These two package give custom labels to a list
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm} % for theorem style environments for question and answers for readablity
+\usepackage{titlesec}
+% Customize section font size
+\titleformat*{\section}{\fontsize{14pt}{16pt}\bfseries\selectfont}
+% Customize subsection font size
+\titleformat*{\subsection}{\fontsize{12pt}{14pt}\bfseries\selectfont}
+\titlespacing*{\section}{0pt}{1ex}{0.5ex}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.4ex}
+\newtheorem*{thm}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{q}{Question}
+\newtheorem*{ans}{Answer}
+\title{Project 2 Report}
+\author{Garrett Nix}
+\date{02-03-2026}
+\begin{document}
+\maketitle
+\vspace{-2em}  % Remove space after title block
+\section{Introduction}
+Due to memory contraints, and a need for fast implementation, object-oriented programming provides an effective method for acheiving this. This efficacy can be shown in a multitude of ways, but a simple example can be shown using a fraction.
+\section{Purpose}
+A fraction class is a useful example of object-oriented programming as it provides a resuable set of code, equipped with the methods and properties inherent to said mathematical object.
+\section{Implementation}
+The implementation I went with was what I consider a more mathematically defined approach. I used the laws afforded to rational numbers, for instance when multiplying fractions $a/b,c/d$, this results in $ac/bd$. Because of this, the Fraction class itself has private variables denoting the initial numerator and denominator, denoted $a,b$. Each method then makes use of another fraction object as an argument, and this acts as the fraction $c/d$. The reason for this approach was to make the use of this class more simplistic from a user perspective. The user simply constructs a fraction and then can state they want to multiply fraction $A$ by fraction $B$ without worry for what the numerator or denominator is for each after the initial construction.
+\section{Discussion}
+Some potential errors may arise from the fact that much of the program is not accessible by the user, having just the fraction methods specified. This could cause some friction in terms of the users ability to customize certain aspects of the fraction class in later applications.
+\end{document}
