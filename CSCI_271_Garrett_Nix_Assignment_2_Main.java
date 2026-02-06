@@ -45,9 +45,11 @@ public class CSCI_271_Garrett_Nix_Assignment_2_Main {
         Fraction b = new Fraction(3,5).add(new Fraction(7));
         Fraction c = new Fraction(6,7);
         Fraction results = c.multiply(a.divide(b));
-        results = c.pow(3); // output should be 216/343.
-        results = c.pow(2).multiply(a.divide(b).add(a)).negate(); // fun function that should output something.
+        Fraction results2 = c.pow(3); // output should be 216/343.
+        Fraction results3 = c.pow(2).multiply(a.divide(b).add(a)).negate(); // fun function that should output something.
         System.out.println(d);
         System.out.println(results);
+        System.out.println(results2);
+        System.out.println(results3);
     }
 }

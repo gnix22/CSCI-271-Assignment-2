@@ -265,8 +265,6 @@ class Fraction{
         for(int i=0; i < n-1; i++){
             a *= a_;
             b *= b_;
-            System.out.println("a equals: " + a_);
-            System.out.println("b equals: " + b_);
         }
         return new Fraction(a, b);
     }
